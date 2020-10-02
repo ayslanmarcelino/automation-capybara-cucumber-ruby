@@ -13,7 +13,8 @@ def add_screenshot(scenario)
   name_scenario = name_scenario.gsub(' ','_').downcase!
   screenshot = "log/screenshots/#{name_scenario}.png"
   page.save_screenshot(screenshot)
-  embed(screenshot, 'image/png', 'Print')
+  screenshot = File.read("#{screenshot}")
+  attach(screenshot, 'image/png')
 end
 
 def add_browser_logs
